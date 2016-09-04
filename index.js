@@ -11,6 +11,8 @@ function removeTransition(e) {
 }
 
 function getHexFromMousePos(e) {
+  e.preventDefault()
+
   if (isFirstMouseMove) {
     $intro.classList.add('transition-4')
     isFirstMouseMove = false
