@@ -62,7 +62,7 @@ br {
 
 /* FONT FAMILIES */
 .playfair     { font-family: 'Playfair Display', serif; }
-.rubik        { font-family: 'Rubik', sans-serif; }
+.rubik        { font-family: 'Rubik', 'Helvetica', sans-serif; }
 .inconsolata  { font-family: 'inconsolata', monospace; }
 
 
@@ -71,6 +71,7 @@ br {
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  font-weight: 600;
 }
 
 .xlarge {
