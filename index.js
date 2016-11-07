@@ -14,7 +14,7 @@ function getBlocks() {
   return paintings.map(function(p) {
     return {
       title: p.toUpperCase().replace(/-/g, ' '),
-      classname: p
+      classname: p + ' painting'
     }
   })
 }
@@ -31,6 +31,22 @@ var gridfolio = new Gridfolio({
     ],
     scaleFonts: false,
   },
-
   blocks: getBlocks()
+})
+
+var $previewWrapper = document.getElementById('painting-preview-wrapper')
+var $preview = $previewWrapper.querySelector('.painting-preview')
+
+paintings.forEach(function(p) {
+  var selector = '.painting.' + p
+  var $painting = document.querySelector(selector)
+
+  $painting.addEventListener('click', function(e) {
+    $previewWrapper.classList.add('is-visible')
+    $preview.style.backgroundImage = 'url(./assets/' + p + '.png)'
+  })
+})
+
+$previewWrapper.addEventListener('click', function(e) {
+  $previewWrapper.classList.remove('is-visible')
 })

@@ -18,9 +18,6 @@ a {
 /* Gridfolio Base Styles */
 .gridfolio {
   width: 100%;
-
-  /* This offsets the padding below in .gridfolio--block. */
-  margin: 0 -10px;
 }
 
 .gridfolio--block {

@@ -81,12 +81,6 @@ br {
   padding-bottom: 10%;
 }
 
-#paintings .painting {
-  position: relative;
-  padding: 10px;
-  margin: 5px 0;
-}
-
 .gridfolio--block-content {
   background-size: cover;
   background-position: center;
@@ -107,18 +101,52 @@ br {
   opacity: 1;
 }
 
-.gridfolio--block.flowers          .gridfolio--block-content { background-image: url('./assets/flowers.png'); }
-.gridfolio--block.trees            .gridfolio--block-content { background-image: url('./assets/trees.png'); }
-.gridfolio--block.flame            .gridfolio--block-content { background-image: url('./assets/flame.png'); }
-.gridfolio--block.green-pepper     .gridfolio--block-content { background-image: url('./assets/green-pepper.png'); }
-.gridfolio--block.red-pepper       .gridfolio--block-content { background-image: url('./assets/red-pepper.png'); }
-.gridfolio--block.blueberry-pie    .gridfolio--block-content { background-image: url('./assets/blueberry-pie.png'); }
-.gridfolio--block.self-portrait-i  .gridfolio--block-content { background-image: url('./assets/self-portrait-i.png'); }
-.gridfolio--block.self-portrait-ii .gridfolio--block-content { background-image: url('./assets/self-portrait-ii.png'); }
-.gridfolio--block.portrait-of-or   .gridfolio--block-content { background-image: url('./assets/portrait-of-or.png'); }
+.flowers          .gridfolio--block-content { background-image: url('./assets/flowers.png'); }
+.trees            .gridfolio--block-content { background-image: url('./assets/trees.png'); }
+.flame            .gridfolio--block-content { background-image: url('./assets/flame.png'); }
+.green-pepper     .gridfolio--block-content { background-image: url('./assets/green-pepper.png'); }
+.red-pepper       .gridfolio--block-content { background-image: url('./assets/red-pepper.png'); }
+.blueberry-pie    .gridfolio--block-content { background-image: url('./assets/blueberry-pie.png'); }
+.self-portrait-i  .gridfolio--block-content { background-image: url('./assets/self-portrait-i.png'); }
+.self-portrait-ii .gridfolio--block-content { background-image: url('./assets/self-portrait-ii.png'); }
+.portrait-of-or   .gridfolio--block-content { background-image: url('./assets/portrait-of-or.png'); }
 
-#paintings .painting:hover { padding-left: 15px; }
-#paintings .painting:hover::after { height: 100%; }
+#painting-preview-wrapper {
+  visibility: hidden;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0.9);
+  opacity: 0;
+
+  cursor: url('./assets/cursor-x.png') 0 0, auto;
+
+  transition: opacity 0.2s ease-in-out, visibility 0.1s ease-in-out;
+}
+
+#painting-preview-wrapper.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.painting-preview {
+  width: 80%;
+  height: 80%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto auto;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 /* MEDIA QUERIES */
 @media (min-width: 993px) {
