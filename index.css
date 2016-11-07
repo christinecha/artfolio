@@ -1,9 +1,4 @@
 /* RESET */
-html {
-  height: 100%;
-  overflow: hidden;
-}
-
 body, body * {
   margin: 0 0;
   padding: 0 0;
@@ -12,8 +7,7 @@ body, body * {
 }
 
 body {
-  height: 100%;
-  overflow: auto;
+  min-height: 100vh;
 }
 
 a, p {
@@ -36,20 +30,6 @@ br {
 .title { opacity: 0.3; margin-bottom: 10px; }
 .social-link { margin: 2px 0; display: block; }
 .social-link:hover { color: #ff0061; }
-
-.transition-2 {
-  transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-}
-
-.transition-4 {
-  transition: all 0.4s linear;
-  -webkit-transition: all 0.4s linear;
-  -moz-transition: all 0.4s linear;
-  -o-transition: all 0.4s linear;
-}
 
 /* TEXT ALIGNMENT */
 .center-align { text-align: center; }
@@ -83,37 +63,8 @@ br {
 }
 
 /* SECTIONS */
-#header {
-  width: 100%;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  position: fixed;
-  z-index: 1;
-}
-
-#header h1, #header h2 { width: 50%; }
-
-#intro {
-  height: 60vh;
-  background-color: #eee;
-  cursor: url(cursor-x.png) 0 0, auto;
-  position: relative;
-}
-
-#intro h2 { transition: inherit; }
-
-#center {
-  position: absolute;
-  top: 30vh;
-  margin-top: 30px;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  opacity: 1;
-}
-
 #bio {
-  padding: 10%;
+  padding: 30px;
   text-align: center;
   background-color: #fff;
 }
@@ -123,53 +74,57 @@ br {
   margin: 0 auto 5px;
 }
 
-#projects {
+#paintings {
+  height: 100%;
   background-color: #fafafa;
   padding: 5%;
   padding-bottom: 10%;
 }
 
-#projects .project {
+#paintings .painting {
   position: relative;
   padding: 10px;
   margin: 5px 0;
-  background-color: #ffffff;
 }
 
-#projects .project::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 0;
-  border-left: 5px solid #ff0061;
-  transition: inherit;
-  -webkit-transition: inherit;
-  -moz-transition: inherit;
-  -o-transition: inherit;
+.gridfolio--block-content {
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
 }
 
-#projects .project:hover { padding-left: 15px; }
-#projects .project:hover::after { height: 100%; }
-
-#footer {
-  width: 100%;
-  height: 30px;
-  position: relative;
-  z-index: 1;
-  margin-top: -30px;
-  background-image: url('./triangle-border.svg');
-  background-size: contain;
-  background-repeat: repeat-x;
-  border-bottom: 35px solid #ff0061;
+.gridfolio--block-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
+.gridfolio--block-content:hover .gridfolio--block-title {
+  opacity: 1;
+}
+
+.gridfolio--block.flowers          .gridfolio--block-content { background-image: url('./assets/flowers.png'); }
+.gridfolio--block.trees            .gridfolio--block-content { background-image: url('./assets/trees.png'); }
+.gridfolio--block.flame            .gridfolio--block-content { background-image: url('./assets/flame.png'); }
+.gridfolio--block.green-pepper     .gridfolio--block-content { background-image: url('./assets/green-pepper.png'); }
+.gridfolio--block.red-pepper       .gridfolio--block-content { background-image: url('./assets/red-pepper.png'); }
+.gridfolio--block.blueberry-pie    .gridfolio--block-content { background-image: url('./assets/blueberry-pie.png'); }
+.gridfolio--block.self-portrait-i  .gridfolio--block-content { background-image: url('./assets/self-portrait-i.png'); }
+.gridfolio--block.self-portrait-ii .gridfolio--block-content { background-image: url('./assets/self-portrait-ii.png'); }
+.gridfolio--block.portrait-of-or   .gridfolio--block-content { background-image: url('./assets/portrait-of-or.png'); }
+
+#paintings .painting:hover { padding-left: 15px; }
+#paintings .painting:hover::after { height: 100%; }
 
 /* MEDIA QUERIES */
 @media (min-width: 993px) {
   #bio {
     padding: 5%;
-    width: 30%;
+    width: 25%;
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
@@ -177,8 +132,8 @@ br {
     text-align: left;
   }
 
-  #projects {
-    width: 70%;
+  #paintings {
+    width: 75%;
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;

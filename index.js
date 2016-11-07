@@ -1,59 +1,36 @@
-var $body = document.body
-var $intro = document.getElementById('intro')
-var $center = document.getElementById('center')
-var $introH2 = $intro.querySelector('h2')
+var paintings = [
+  'flowers',
+  'trees',
+  'flame',
+  'green-pepper',
+  'red-pepper',
+  'blueberry-pie',
+  'self-portrait-i',
+  'self-portrait-ii',
+  'portrait-of-or'
+]
 
-var isFirstMouseMove = true
-
-function removeTransition(e) {
-  $intro.classList.remove('transition-4')
-  $intro.removeEventListener('transitionend', removeTransition)
-}
-
-function getHexFromMousePos(e) {
-  e.preventDefault()
-
-  if (isFirstMouseMove) {
-    $intro.classList.add('transition-4')
-    isFirstMouseMove = false
-  } else if ($intro.classList.contains('transition-4')) {
-    $intro.addEventListener('transitionend', removeTransition)
-  }
-
-  var relativeX = e.pageX / $intro.clientWidth
-  var relativeY = (e.pageY - $intro.offsetTop) / $intro.clientHeight
-
-  if (relativeX < 0.51 && relativeX > 0.49 && relativeY < 0.51 && relativeY > 0.49) {
-    $center.classList.remove('is-hidden')
-  } else {
-    $center.classList.add('is-hidden')
-  }
-
-  $intro.style.backgroundColor = getProgressiveGray(relativeX)
-  $introH2.style.color = getProgressiveGray(relativeY)
-}
-
-function getProgressiveGray(n) {
-  var r = Math.round(255 * n)
-  var g = Math.round(255 * n)
-  var b = Math.round(255 * n)
-  return 'rgb(' + [r,g,b].join(',') + ')'
-}
-
-function handleResize() {
-  requestAnimationFrame(function() {
-    introRect = $intro.getBoundingClientRect()
-    isFirstMouseMove = true
+function getBlocks() {
+  return paintings.map(function(p) {
+    return {
+      title: p.toUpperCase().replace(/-/g, ' '),
+      classname: p
+    }
   })
 }
 
-/* ADD EVENT LISTENERS */
-window.addEventListener('resize', handleResize)
+var gridfolio = new Gridfolio({
 
-$intro.addEventListener('mousemove', getHexFromMousePos)
-$intro.addEventListener('mouseleave', function() { isFirstMouseMove = true })
+  container: '#paintings',
+  options: {
+    animateIntoView: true,
+    breakpoints: [
+      { minWidth: 0, gridWidth: 1 },
+      { minWidth: 500, gridWidth: 2 },
+      { minWidth: 900, gridWidth: 3 },
+    ],
+    scaleFonts: false,
+  },
 
-$intro.addEventListener('touchmove', getHexFromMousePos)
-$intro.addEventListener('touchend', function() { isFirstMouseMove = true })
-
-/* RUN, FUNCTIONS, RUN */
+  blocks: getBlocks()
+})
